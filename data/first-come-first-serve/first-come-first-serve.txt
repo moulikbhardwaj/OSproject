@@ -1,0 +1,8 @@
+This text file holds the information about First Come First Serve scheduling method.
+In this method, we order jobs in such a way that the job that came earlier will be executed first.
+It is the easiest and simplest CPU scheduling algorithm.
+This is a non-preemptive type of scheduling.
+
+Implementation:
+We can implement FCFS easily, by sorting the input queue by the order of their arrival time, and then execute them one by one.
+If the tasks come in order of arrival time, then the running time is O(N), else, we need to sort them, making runtime of O(N*(log(N)))

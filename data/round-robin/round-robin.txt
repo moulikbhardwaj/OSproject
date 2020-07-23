@@ -1,0 +1,9 @@
+This text file holds the information about round robin job scheduling method.
+In this method, we give assign each process a fixed time slot, so as to remove the problem of starvation.
+This is a preemptive type of scheduling, as each job is given a fixed time slot at most, irrespective of it being completed in that time slot or not.
+The problem that arises in this type of scheduling is thrashing, i.e. overhead due to context switching. So, if we give a very small time slot to the jobs, this will cause overall slowdown of execution due to thrashing.
+
+Implementation:
+In this algorithm, we need to maintain a list of jobs that are incomplete, and iterate over each of them, giving them equal time to process.
+For this, we can use a set data structure, which allows both insertion and deletion in O(log(n)) time. If we hadn't used a set and instead opted for an array, it would cause the complexity to rise to O(n*totalBurstUnits), because, if we dont delete the completed jobs from current list, it would cause to iterate over completed jobs unnecessarily, and since we have n jobs, in worst case, we will have to iterate over all jobs again and again until last job is finished. And if we delete the jobs from the list, then the complexity for deletion from an array is O(n), and we have n jobs. So, in at some point we have to delete all of them, leaving us with a complexity of O(n*n).
+So, using sets decreases this complexity to O(nlog(totalBurstUnits)), as we can delete from set in O(log(n)), and we have to iteratre over the number of bursts, to complete execution.

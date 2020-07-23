@@ -1,0 +1,9 @@
+This text file holds the information about non preemptive sjf scheduling method.
+In this method, we order jobs in such a way that the job with shortest burst time will be executed first.
+Being preemptive, if a job with shorter burst time comes than the one currently executing, execution will stop,and new job start executing immidiately, i.e. context switching can occour at arrival of new job.
+
+This type of scheduling can cause starvation.
+
+Implementation:
+We can Implementat nonpreemptive sjf scheduled by sorting the input queue in order of their burst time, and execute them one by one, or maintain a min-heap/priority queue, for the processes, and add to it the processes. The front element of min-heap will give the job to be executed next.
+Complexity: O(Nlog(N))

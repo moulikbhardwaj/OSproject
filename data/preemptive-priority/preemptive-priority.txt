@@ -1,0 +1,9 @@
+This text file holds the information about non preemptive priority scheduling method.
+In this method, we order jobs in such a way that the job with highest priority(i.e. lowest index) will be executed first.
+Being preemptive, if a job with higher priority comes than the one currently executing, execution will stop ,and new job will start executing immidiately, i.e. context scheduled will occour immidiately.
+
+Implementation:
+Since we need to keep the job with highest priority that has been arrived at any given moment, we can use a priority queue data structure to hold the jobs, which maintains the invariant that the queue will be always be sorted in a way that higher priority job comes before lower one.
+If there are n jobs to be scheduled, then
+Insertion of one element in priority queue is O(log(n)), so, inserting all elements will have complexity of O(nlog(n)).
+This is the bottleneck of this algorithm.
