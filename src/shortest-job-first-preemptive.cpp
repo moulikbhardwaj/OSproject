@@ -4,9 +4,7 @@
 using namespace std;
 
 void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int n){
-	//int process_id[] = p[],
-	//	arrival_time[] = ar[],
-	//	burst_time[] = br[],
+	
 	int	completion_time[n] = {0},
 		turn_around_time[n],
 		waiting_time[n];
@@ -15,8 +13,8 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 	int i, j;
 	float avg_tat=0, avg_wt=0;
 	
-	for(i=0; i<4; i++){
-		for(j=i+1; j<4; j++){
+	for(i=0; i<n; i++){
+		for(j=i+1; j<n; j++){
 			if (burst_time[i] > burst_time[j]){
 				int temp = burst_time[i];
 				burst_time[i] = burst_time[j];
@@ -34,7 +32,7 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 	}
 	
 	j=0;
-	for (i=1; i<4; i++){
+	for (i=1; i<n; i++){
 		if (arrival_time[i] < arrival_time[j]){
 			j=i;
 		}
@@ -63,14 +61,14 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 														"Turn Around T.",
 														"Waiting Time");
 														
-	for(i=0; i<4; i++){
+	for(i=0; i<n; i++){
 		
 		if (i!=0){
 			if (arrival_time[i] > completion_time[i-1]){
 				int min_arr_time = arrival_time[i];
 				int min_arr_time_index = i;
 				j=i;
-				while (arrival_time[j] > completion_time[i-1] && j<5){
+				while (arrival_time[j] > completion_time[i-1] && j<n+1){
 					if (arrival_time[j] < min_arr_time){
 						min_arr_time = arrival_time[j];
 						min_arr_time_index = j;
@@ -78,7 +76,7 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 					j++;
 				}
 				
-				if (j < 4) min_arr_time_index = j;
+				if (j < n) min_arr_time_index = j;
 				
 				int p_id = process_id[min_arr_time_index];
 				int arr_t =arrival_time[min_arr_time_index];
@@ -117,28 +115,24 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 		avg_wt += waiting_time[i];
 	}
 	
-	cout << endl << endl << "Gantt Chart:" << endl << " ";
+//	cout << endl << endl << "Gantt Chart:" << endl << " ";
 	fstream f;
-    f.open("output.txt",ios::out);
+    f.open("output_FCFS.txt",ios::out);
 	while(f)
 	{
 	    
-	f<<"processId"<<'\t'<<"startTime"<<'\t'<<"endTime"<<endl;
-	for(i=0; i<4; i++){
+	f<<"Process Id"<<'\t'<<"Start time"<<'\t'<<"End Time"<<endl;
+	for(i=0; i<n; i++){
 		
-		if(i!=0){
-			if(arrival_time[i] > completion_time[i-1])
-				cout << " idle  | ";
-			
-		}
-		cout << "    P" << process_id[i] << " |";	
+
+
+		
 		f<<process_id[i]<<'\t';
 	
 	
-	cout << endl << arrival_time[0];
 	if(i==0)
 	f<<arrival_time[0]<<"\t";
-	//for(i=0; i<4; i++){
+
 		
 		if(i!=0){
 			if(arrival_time[i] > completion_time[i-1])
@@ -146,13 +140,13 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 				f<<arrival_time[i]<<'\t';
 		}
 		
-		printf("%7d ", completion_time[i]);	
+	
 		f<<completion_time[i]<<endl;
 	}
 	f.close();  
 	}
-	avg_tat = avg_tat/4;
-	avg_wt = avg_wt/4;
+	avg_tat = avg_tat/n;
+	avg_wt = avg_wt/n;
 	
 	cout << endl << endl << "Average Turn Around Time: " << avg_tat;
 	cout << endl << "Average Waiting Time: " << avg_wt;
@@ -172,7 +166,7 @@ int main(){
     cout<<"Process Burst Times:\n";
     for(int i=0; i<n; i++) cin>>ar[i];
 
-    cout<<"Process Arrival Times:\n";
+   cout<<"Process Arrival Times:\n";
     for(int i=0; i<n; i++) cin>>br[i];
     shortest_job_first(p,ar,br,n);
     return 0;
