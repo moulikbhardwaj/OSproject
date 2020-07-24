@@ -117,7 +117,7 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 	
 //	cout << endl << endl << "Gantt Chart:" << endl << " ";
 	fstream f;
-    f.open("output_FCFS.txt",ios::out);
+    f.open("output.txt",ios::out);
 	while(f)
 	{
 	    
