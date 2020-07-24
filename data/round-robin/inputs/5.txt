@@ -1,5 +1,9 @@
 ProcessId  	ArrivalTime 	BurstTime
-1 7 5
-2 9 6
-3 0 5
-4 2 10
+1 1 6
+2 4 5
+3 7 8
+4 1 9
+5 7 8
+6 9 7
+7 10 7
+8 0 5

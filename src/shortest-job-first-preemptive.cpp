@@ -121,7 +121,7 @@ void shortest_job_first(int process_id[],int arrival_time[],int burst_time[],int
 	while(f)
 	{
 	    
-	f<<"Process Id"<<'\t'<<"Start time"<<'\t'<<"End Time"<<endl;
+	f<<"processId"<<'\t'<<"startTime"<<'\t'<<"endTime"<<endl;
 	for(i=0; i<n; i++){
 		
 

@@ -16,7 +16,7 @@ int main(int argc, char** argv){
     ofstream file(argv[1]);
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<int> dist(1, 50);
+    uniform_int_distribution<int> dist(1, 10);
     uniform_int_distribution<int> dist1(0, 100);
     uniform_int_distribution<int> dist2(20, 100);
     uniform_int_distribution<int> dist3(1, 100);

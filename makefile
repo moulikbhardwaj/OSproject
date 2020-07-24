@@ -1,6 +1,6 @@
 all: compile FCFS SJF-Preemptive SJF-Non-Preemptive Priority-preemptive Priority-non-preemptive Round-Robin
 
-execute: FCFS SJF-Preemptive SJF-Non-Preemptive Priority-preemptive Round-Robin
+execute: FCFS SJF-Preemptive SJF-Non-Preemptive Priority-preemptive Priority-non-preemptive Round-Robin
 
 compile:
 	g++ ./src/first-come-first-serve.cpp -o ./bin/first-come-first-serve.out
@@ -9,6 +9,13 @@ compile:
 	g++ ./src/preemptive-priority.cpp -o ./bin/preemptive-priority.out
 	g++ ./src/non-preemptive-priority.cpp -o ./bin/non-preemptive-priority.out
 	g++ ./src/round-robin.cpp -o ./bin/round-robin.out
+
+	g++ ./inputGenerator/fcfs.cpp -o ./inputGenerator/fcfs
+	g++ ./inputGenerator/priority-preemptive.cpp -o ./inputGenerator/priority-preemptive
+	g++ ./inputGenerator/priority-non-preemptive.cpp -o ./inputGenerator/priority-non-preemptive
+	g++ ./inputGenerator/sjf-preemptive.cpp -o ./inputGenerator/sjf-preemptive
+	g++ ./inputGenerator/sjf-non-preemptive.cpp -o ./inputGenerator/sjf-non-preemptive
+	g++ ./inputGenerator/round-robin.cpp -o ./inputGenerator/round-robin
 
 FCFS:
 	@echo "FCFS"
@@ -279,3 +286,9 @@ Inputs:
 clean:
 	rm -f ./bin/*
 	rm -f ./data/*/outputs/*
+	rm -f ./inputGenerator/fcfs
+	rm -f ./inputGenerator/sjf-non-preemptive
+	rm -f ./inputGenerator/sjf-preemptive
+	rm -f ./inputGenerator/priority-preemptive
+	rm -f ./inputGenerator/priority-non-preemptive
+	rm -f ./inputGenerator/round-robin
